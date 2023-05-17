@@ -29,14 +29,20 @@ namespace BasicGraficEngine.GameEngine
             Log.Info($"[SPRITE2D]({Tag}) - Has been registerd!");
             Engine.RegisterSprite(this);
         }
-        public bool IsColliding(Sprite2D a, Sprite2D b)
+        public bool IsColliding(string Tag)
         {
-            if(a.Position.X + a.Scale.X >= b.Position.X &&
-                a.Position.Y + a.Scale.Y >= b.Position.Y &&
-                a.Position.X <= b.Position.X + b.Scale.X &&
-                a.Position.Y <= b.Position.Y + b.Scale.Y)
+            foreach(Sprite2D b in Engine.AllSprites)
             {
-                return true;
+                if (b.Tag == Tag)
+                {
+                    if (Position.X + Scale.X >= b.Position.X &&
+                        Position.Y + Scale.Y >= b.Position.Y &&
+                        Position.X <= b.Position.X + b.Scale.X &&
+                        Position.Y <= b.Position.Y + b.Scale.Y)
+                    {
+                        return true;
+                    }
+                }
             }
             return false;
         }

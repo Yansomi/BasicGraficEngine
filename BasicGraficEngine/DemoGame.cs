@@ -14,7 +14,6 @@ namespace BasicGraficEngine
     public class DemoGame : GameEngine.Engine
     {
         Sprite2D Player;
-        Sprite2D Player2;
 
         bool Left;
         bool Right;
@@ -59,20 +58,23 @@ namespace BasicGraficEngine
                     }
                 }
             }
-            Player = new Sprite2D(new Vector(10, 10), new Vector(11, 16), "Player/Right", "Player");
-            Player2 = new Sprite2D(new Vector(150, 100), new Vector(11, 16), "Player/Right", "Player");
+            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Right", "Player");
+            
         }
+        int times = 0;
         public override void OnUpdate()
         {
             if (Up) { Player.Position.Y -=1f; }
             if(Down) { Player.Position.Y +=1f; }
             if (Left) { Player.Position.X -= 1f; } 
             if (Right) { Player.Position.X += 1f; }
-
-            if(Player.IsColliding(Player,Player2))
+            
+            if(Player.IsColliding("Water"))
             {
-                Log.Info("Colliding!");
+                Log.Info($"Collision {times}");
+                times++;
             }
+
         }
 
         public override void GetKeyDown(KeyEventArgs e)
