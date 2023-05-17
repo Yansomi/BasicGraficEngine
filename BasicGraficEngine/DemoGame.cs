@@ -6,25 +6,31 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BasicGraficEngine.GameEngine;
 
 namespace BasicGraficEngine
 {
     public class DemoGame : GameEngine.Engine
     {
-        //Sprite2D Player;
+        Sprite2D Player;
+        Sprite2D Player2;
 
+        bool Left;
+        bool Right;
+        bool Up;
+        bool Down;
         string[,] Map =
         {
-             {".",".",".",".",".",".","."},
-             {".",".",".",".",".",".","."},
-             {".","g","g","g","g","g","."},
-             {".","g","g","g","g","g","."},
-             {".","g","g","g","g","g","."},
-             {".","g","g","g","g","g","."},
-             {".",".",".",".",".",".","."},
+             {"w","w","w","w","w","w","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","w","w","w","w","w","w"},
         };
-        public DemoGame() : base(new Vector(615,515),"Basic Engine Demo")
+        public DemoGame() : base(new Vector(720,720),"Basic Engine Demo")
         { 
         }
 
@@ -37,7 +43,7 @@ namespace BasicGraficEngine
         {
             BackgroundColor = Color.Black;
 
-            //Player = new Sprite2D(new Vector(10,10),new Vector(11,16),"Player/Right","Player");
+            
 
             for(int i =0; i < Map.GetLength(0); i++)
             {
@@ -45,19 +51,70 @@ namespace BasicGraficEngine
                 {
                     if (Map[i,j] == "g")
                     {
-                        new Sprite2D(new Vector(i *16, j*16), new Vector(16, 16), "Tiles/Grass", "Ground");
+                        new Sprite2D(new Vector(j *36, i*36), new Vector(36,36), "Tiles/Grass", "Ground");
+                    }
+                    if (Map[i,j] == "w")
+                    {
+                        new Sprite2D(new Vector(j * 36, i * 36), new Vector(36, 36), "Tiles/Water", "Water");
                     }
                 }
             }
+            Player = new Sprite2D(new Vector(10, 10), new Vector(11, 16), "Player/Right", "Player");
+            Player2 = new Sprite2D(new Vector(150, 100), new Vector(11, 16), "Player/Right", "Player");
         }
-        int time = 0;
         public override void OnUpdate()
         {
-            if(time > 400)
+            if (Up) { Player.Position.Y -=1f; }
+            if(Down) { Player.Position.Y +=1f; }
+            if (Left) { Player.Position.X -= 1f; } 
+            if (Right) { Player.Position.X += 1f; }
+
+            if(Player.IsColliding(Player,Player2))
             {
-                //Player.DestroySelf();
+                Log.Info("Colliding!");
             }
-            time++;
+        }
+
+        public override void GetKeyDown(KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.W)
+            {
+                Up = true;
+            }
+            if (e.KeyCode == Keys.S)
+            {
+                Down = true;
+            }
+            if (e.KeyCode == Keys.A)
+            {
+                Left = true;
+            }
+            if (e.KeyCode == Keys.D)
+            {
+                Right = true;
+            }
+
+
+        }
+
+        public override void GetKeyUp(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.W)
+            {
+                Up = false;
+            }
+            if (e.KeyCode == Keys.S)
+            {
+                Down = false;
+            }
+            if (e.KeyCode == Keys.A)
+            {
+                Left = false;
+            }
+            if (e.KeyCode == Keys.D)
+            {
+                Right = false;
+            }
         }
     }
 }

@@ -27,6 +27,9 @@ namespace BasicGraficEngine.GameEngine
         private static List<Sprite2D> AllSprites = new List<Sprite2D>();
 
         public Color BackgroundColor = Color.Black;
+
+        public Vector CameraPosition = Vector.Zero();
+        public float CameraAngle = 0f;
         public Engine(Vector ScreenSize,string Title = "Game") 
         {
             Log.Info("Game is Starting");
@@ -36,11 +39,23 @@ namespace BasicGraficEngine.GameEngine
             Window.Size = new Size((int)this.ScreenSize.X, (int)this.ScreenSize.Y);
             Window.Text = this.Title;
             Window.Paint += Renderer;
+            Window.KeyDown += Window_KeyDown;
+            Window.KeyUp += Window_KeyUp;
 
             GameLoopThread = new Thread(GameLoop);
             GameLoopThread.Start(); 
 
             Application.Run(Window);
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            GetKeyUp(e);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            GetKeyDown(e);
         }
 
         public static void RegisterShape(Shape2D shape)
@@ -88,7 +103,8 @@ namespace BasicGraficEngine.GameEngine
         {
             Graphics g = e.Graphics;
             g.Clear(BackgroundColor);
-
+            g.TranslateTransform(CameraPosition.X, CameraPosition.Y);
+            g.RotateTransform(CameraAngle);
             for(int i = 0; i < AllShapes.Count; i++)
             {
                 g.FillRectangle(new SolidBrush(Color.Red), AllShapes[i].Position.X, AllShapes[i].Position.Y, AllShapes[i].Scale.X, AllShapes[i].Scale.Y);
@@ -98,9 +114,12 @@ namespace BasicGraficEngine.GameEngine
             {
                 g.DrawImage(AllSprites[i].Sprite, AllSprites[i].Position.X, AllSprites[i].Position.Y, AllSprites[i].Scale.X, AllSprites[i].Scale.Y);    
             }
+            
         }
         public abstract void OnLoad();
         public abstract void OnUpdate();
         public abstract void OnDraw();
+        public abstract void GetKeyDown(KeyEventArgs e);
+        public abstract void GetKeyUp(KeyEventArgs e);
     }
 }

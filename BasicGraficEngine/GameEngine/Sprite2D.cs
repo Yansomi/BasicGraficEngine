@@ -29,6 +29,17 @@ namespace BasicGraficEngine.GameEngine
             Log.Info($"[SPRITE2D]({Tag}) - Has been registerd!");
             Engine.RegisterSprite(this);
         }
+        public bool IsColliding(Sprite2D a, Sprite2D b)
+        {
+            if(a.Position.X + a.Scale.X >= b.Position.X &&
+                a.Position.Y + a.Scale.Y >= b.Position.Y &&
+                a.Position.X <= b.Position.X + b.Scale.X &&
+                a.Position.Y <= b.Position.Y + b.Scale.Y)
+            {
+                return true;
+            }
+            return false;
+        }
         public void DestroySelf()
         {
             Engine.UnRegisterSprite(this);
