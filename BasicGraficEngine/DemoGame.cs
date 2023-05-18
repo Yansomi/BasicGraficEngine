@@ -21,16 +21,7 @@ namespace BasicGraficEngine
         bool Right;
         bool Up;
         bool Down;
-        string[,] Map =
-        {
-             {"w","w","w","w","w","w","w","w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","g","g","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
-             {"w","w","w","w","w","w","w","w","g","g","g","g","g","w"},
-        };
+        MapHandler mapHandler = new MapHandler();
        // string[,] Buildings =
        //{
        //      {"w","w","w","w","w","w","w"},
@@ -54,22 +45,7 @@ namespace BasicGraficEngine
         {
             BackgroundColor = Color.Black;
 
-            
-
-            for(int i =0; i < Map.GetLength(0); i++)
-            {
-                for(int j = 0; j < Map.GetLength(1); j++)
-                {
-                    if (Map[i,j] == "g")
-                    {
-                        new Sprite2D(new Vector(j *36, i*36), new Vector(36,36), "Tiles/Grass2", "Ground");
-                    }
-                    if (Map[i,j] == "w")
-                    {
-                        new Sprite2D(new Vector(j * 36, i * 36), new Vector(36, 36), "Tiles/Water", "Water");
-                    }
-                }
-            }
+            mapHandler.LoadMap();
             //for (int i = 0; i < Map.GetLength(0); i++)
             //{
             //    for (int j = 0; j < Map.GetLength(1); j++)
@@ -123,6 +99,7 @@ namespace BasicGraficEngine
             Tags.Add("House");
         }
         int times = 0;
+        float n = -1f;
         public override void OnUpdate()
         {
             if (Up) { Player.Position.Y -=1f; }
@@ -132,6 +109,8 @@ namespace BasicGraficEngine
 
             Player.CollitionStop(Player.IsColliding(Tags));
             Player.cycleAnimation();
+            base.CameraPosition.X = Player.Position.X * n + 360;
+            base.CameraPosition.Y = Player.Position.Y * n +360;
         }
 
         public override void GetKeyDown(KeyEventArgs e)

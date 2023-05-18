@@ -28,7 +28,7 @@ namespace BasicGraficEngine.GameEngine
 
         public Color BackgroundColor = Color.Black;
 
-        public Vector CameraPosition = Vector.Zero();
+        public Vector CameraPosition = new Vector(360, 360);
         public float CameraAngle = 0f;
         public Engine(Vector ScreenSize,string Title = "Game") 
         {
