@@ -44,7 +44,6 @@ namespace BasicGraficEngine.GameEngine
             }
             if (Times == 0)
             {
-                Log.Info($"Position was: {Position.X} Direction is to: {direction.X}");
                 if (Position.X < direction.X)
                 {
                     Position.X = direction.X;
@@ -52,7 +51,6 @@ namespace BasicGraficEngine.GameEngine
                     LastDirection = 0;
                     Times++;
                     LastSprite = SpriteDirectors[0].GetBitmap(true);
-                    Log.Info("Walking right");
                     return LastSprite;
                 }
                 if(Position.X > direction.X)
@@ -62,7 +60,6 @@ namespace BasicGraficEngine.GameEngine
                     LastDirection = 1;
                     Times++;
                     LastSprite = SpriteDirectors[1].GetBitmap(true);
-                    Log.Info("Walking left");
                     return LastSprite;
                 }
                 if(Position.Y > direction.Y)
@@ -72,7 +69,6 @@ namespace BasicGraficEngine.GameEngine
                     LastDirection = 2;
                     Times++;
                     LastSprite = SpriteDirectors[2].GetBitmap(true);
-                    Log.Info("Walking up");
                     return LastSprite;
                 }
                 if (Position.Y < direction.Y)
@@ -82,7 +78,6 @@ namespace BasicGraficEngine.GameEngine
                     LastDirection = 3;
                     Times++;
                     LastSprite = SpriteDirectors[3].GetBitmap(true);
-                    Log.Info("Walking down");
                     return LastSprite;
                 }
                 if(Position.X == direction.X &&
@@ -92,7 +87,6 @@ namespace BasicGraficEngine.GameEngine
                     Position.Y = direction.Y;
                     Times++;
                     LastSprite = SpriteDirectors[LastDirection].GetBitmap(false);
-                    Log.Info("Standing still");
                     return LastSprite;
                 }
             }
