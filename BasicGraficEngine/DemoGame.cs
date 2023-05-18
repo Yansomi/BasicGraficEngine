@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BasicGraficEngine.GameEngine;
@@ -44,8 +45,8 @@ namespace BasicGraficEngine
         public override void OnLoad()
         {
             BackgroundColor = Color.Black;
-
             mapHandler.LoadMap();
+
             //for (int i = 0; i < Map.GetLength(0); i++)
             //{
             //    for (int j = 0; j < Map.GetLength(1); j++)
@@ -56,7 +57,6 @@ namespace BasicGraficEngine
             //        }
             //    }
             //}
-            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Left", "Player");
 
             SpriteDirector director1 = new SpriteDirector();
             SpriteDirector director2 = new SpriteDirector();
@@ -88,6 +88,7 @@ namespace BasicGraficEngine
             spriteDirectorsList.Add(director2);
             spriteDirectorsList.Add(director3);
             spriteDirectorsList.Add(director4);
+            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Left", "Player");
             Vector v = new Vector();
             v.X = Player.Position.X;
             v.Y = Player.Position.Y;
@@ -153,6 +154,10 @@ namespace BasicGraficEngine
             {
                 Right = false;
             }
+        }
+        void MapCaller()
+        {
+            mapHandler.LoadMap();
         }
     }
 }
