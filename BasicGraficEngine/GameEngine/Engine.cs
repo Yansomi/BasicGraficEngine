@@ -45,6 +45,7 @@ namespace BasicGraficEngine.GameEngine
             Window.FormClosing += Window_FormClosing;
 
             GameLoopThread = new Thread(GameLoop);
+            GameLoopThread.Priority = ThreadPriority.Highest;
             GameLoopThread.Start(); 
 
             Application.Run(Window);
