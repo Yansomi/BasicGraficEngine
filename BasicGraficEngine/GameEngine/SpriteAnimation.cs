@@ -33,57 +33,72 @@ namespace BasicGraficEngine.GameEngine
             this.SpriteDirectors = directors;
             Times = 0;
             LastDirection = 0;
-            LastSprite = null;
+            LastSprite = new Bitmap(directors[1].GetBitmap(false));
         }
+        public SpriteAnimation() { }
         public Bitmap GetSpriteForDirection(Vector direction)
         {
+            if (Times == 10)
+            {
+                Times = 0;
+            }
             if (Times == 0)
             {
+                Log.Info($"Position was: {Position.X} Direction is to: {direction.X}");
                 if (Position.X < direction.X)
                 {
-                    Times++;
-                    LastSprite = SpriteDirectors[0].GetBitmap(true);
                     Position.X = direction.X;
                     Position.Y = direction.Y;
+                    LastDirection = 0;
+                    Times++;
+                    LastSprite = SpriteDirectors[0].GetBitmap(true);
+                    Log.Info("Walking right");
                     return LastSprite;
                 }
                 if(Position.X > direction.X)
                 {
-                    Times++;
-                    LastSprite = SpriteDirectors[1].GetBitmap(true);
                     Position.X = direction.X;
                     Position.Y = direction.Y;
+                    LastDirection = 1;
+                    Times++;
+                    LastSprite = SpriteDirectors[1].GetBitmap(true);
+                    Log.Info("Walking left");
                     return LastSprite;
                 }
                 if(Position.Y > direction.Y)
                 {
-                    Times++;
-                    LastSprite = SpriteDirectors[2].GetBitmap(true);
                     Position.X = direction.X;
                     Position.Y = direction.Y;
+                    LastDirection = 2;
+                    Times++;
+                    LastSprite = SpriteDirectors[2].GetBitmap(true);
+                    Log.Info("Walking up");
                     return LastSprite;
                 }
                 if (Position.Y < direction.Y)
                 {
-                    Times++;
-                    LastSprite = SpriteDirectors[3].GetBitmap(true);
                     Position.X = direction.X;
                     Position.Y = direction.Y;
+                    LastDirection = 3;
+                    Times++;
+                    LastSprite = SpriteDirectors[3].GetBitmap(true);
+                    Log.Info("Walking down");
                     return LastSprite;
                 }
                 if(Position.X == direction.X &&
                     Position.Y== direction.Y) 
                 {
+                    Position.X = direction.X;
+                    Position.Y = direction.Y;
                     Times++;
                     LastSprite = SpriteDirectors[LastDirection].GetBitmap(false);
+                    Log.Info("Standing still");
                     return LastSprite;
                 }
             }
-            else if(Times == 2)
-            {
-                Times = 0;
-            }
+            Times++;
             return LastSprite;
+
         }
     }
 }

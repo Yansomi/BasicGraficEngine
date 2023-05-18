@@ -23,6 +23,8 @@ namespace BasicGraficEngine.GameEngine
             this.Directory = Directory;
             this.Tag = tag;
 
+            Animation = new SpriteAnimation();
+
             Image temp = Image.FromFile($"Assets/Sprites/{Directory}.png");
 
             Bitmap sprite = new Bitmap(temp,(int)this.Scale.X, (int)this.Scale.Y);

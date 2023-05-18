@@ -23,24 +23,24 @@ namespace BasicGraficEngine
         bool Down;
         string[,] Map =
         {
-             {"w","w","w","w","w","w","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","w","w","w","w","w","w"},
+             {"w","w","w","w","w","w","w","w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","g","g","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w","w","g","g","g","g","g","w"},
+             {"w","w","w","w","w","w","w","w","g","g","g","g","g","w"},
         };
-        string[,] Buildings =
-       {
-             {"w","w","w","w","w","w","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","b","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","w"},
-             {"w","w","w","w","w","w","w"},
-        };
+       // string[,] Buildings =
+       //{
+       //      {"w","w","w","w","w","w","w"},
+       //      {"w","g","g","g","g","g","w"},
+       //      {"w","g","g","g","g","g","w"},
+       //      {"w","g","g","b","g","g","w"},
+       //      {"w","g","g","g","g","g","w"},
+       //      {"w","g","g","g","g","g","w"},
+       //      {"w","w","w","w","w","w","w"},
+       // };
         public DemoGame() : base(new Vector(720,720),"Basic Engine Demo")
         { 
         }
@@ -62,7 +62,7 @@ namespace BasicGraficEngine
                 {
                     if (Map[i,j] == "g")
                     {
-                        new Sprite2D(new Vector(j *36, i*36), new Vector(36,36), "Tiles/Grass", "Ground");
+                        new Sprite2D(new Vector(j *36, i*36), new Vector(36,36), "Tiles/Grass2", "Ground");
                     }
                     if (Map[i,j] == "w")
                     {
@@ -70,17 +70,17 @@ namespace BasicGraficEngine
                     }
                 }
             }
-            for (int i = 0; i < Map.GetLength(0); i++)
-            {
-                for (int j = 0; j < Map.GetLength(1); j++)
-                {
-                    if (Buildings[i,j] == "b")
-                    {
-                        new Sprite2D(new Vector(j * 36, i * 36), new Vector(51, 80), "Houses/House", "House");
-                    }
-                }
-            }
-            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Down", "Player");
+            //for (int i = 0; i < Map.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < Map.GetLength(1); j++)
+            //    {
+            //        if (Buildings[i,j] == "b")
+            //        {
+            //            new Sprite2D(new Vector(j * 36, i * 36), new Vector(51, 80), "Houses/House", "House");
+            //        }
+            //    }
+            //}
+            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Left", "Player");
 
             SpriteDirector director1 = new SpriteDirector();
             SpriteDirector director2 = new SpriteDirector();
@@ -112,8 +112,10 @@ namespace BasicGraficEngine
             spriteDirectorsList.Add(director2);
             spriteDirectorsList.Add(director3);
             spriteDirectorsList.Add(director4);
-
-            SpriteAnimation animation = new SpriteAnimation(Player.Position, spriteDirectorsList);
+            Vector v = new Vector();
+            v.X = Player.Position.X;
+            v.Y = Player.Position.Y;
+            SpriteAnimation animation = new SpriteAnimation(v, spriteDirectorsList);
             Player.AddSpriteAnimation(animation);
 
 
