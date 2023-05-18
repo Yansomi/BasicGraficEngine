@@ -110,7 +110,7 @@ namespace BasicGraficEngine
             Player.CollitionStop(Player.IsColliding(Tags));
             Player.cycleAnimation();
             base.CameraPosition.X = Player.Position.X * n + 360;
-            base.CameraPosition.Y = Player.Position.Y * n +360;
+            base.CameraPosition.Y = Player.Position.Y * n + 360;
         }
 
         public override void GetKeyDown(KeyEventArgs e)
