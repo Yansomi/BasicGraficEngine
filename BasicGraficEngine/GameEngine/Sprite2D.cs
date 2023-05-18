@@ -11,6 +11,7 @@ namespace BasicGraficEngine.GameEngine
     {
         public Vector Position = null;
         public Vector Scale = null;
+        public Vector LasPos = new Vector();
         public string Directory = "";
         public string Tag = "";
         public Bitmap Sprite = null;
@@ -29,18 +30,21 @@ namespace BasicGraficEngine.GameEngine
             Log.Info($"[SPRITE2D]({Tag}) - Has been registerd!");
             Engine.RegisterSprite(this);
         }
-        public bool IsColliding(string Tag)
+        public bool IsColliding(List<string> Tags)
         {
             foreach(Sprite2D b in Engine.AllSprites)
             {
-                if (b.Tag == Tag)
+                foreach (string Tag in Tags)
                 {
-                    if (Position.X + Scale.X >= b.Position.X &&
-                        Position.Y + Scale.Y >= b.Position.Y &&
-                        Position.X <= b.Position.X + b.Scale.X &&
-                        Position.Y <= b.Position.Y + b.Scale.Y)
+                    if (b.Tag == Tag)
                     {
-                        return true;
+                        if (Position.X + Scale.X >= b.Position.X &&
+                            Position.Y + Scale.Y >= b.Position.Y &&
+                            Position.X <= b.Position.X + b.Scale.X &&
+                            Position.Y <= b.Position.Y + b.Scale.Y)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -49,6 +53,24 @@ namespace BasicGraficEngine.GameEngine
         public void DestroySelf()
         {
             Engine.UnRegisterSprite(this);
+        }
+        /// <summary>
+        /// Takes the IsColliding function to stop movement when colliding with other
+        /// objekt with specific tag.
+        /// </summary>
+        /// <param name="IsColliding"></param>
+        public void CollitionStop(bool IsColliding)
+        {
+            if(IsColliding)
+            {
+                Position.X = LasPos.X;
+                Position.Y = LasPos.Y;
+            }
+            else
+            {
+                LasPos.X = Position.X;
+                LasPos.Y = Position.Y;
+            }
         }
     }
 }

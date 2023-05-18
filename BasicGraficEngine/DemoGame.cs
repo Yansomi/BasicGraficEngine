@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace BasicGraficEngine
     public class DemoGame : GameEngine.Engine
     {
         Sprite2D Player;
+        List<string> Tags = new List<string>();
 
         bool Left;
         bool Right;
@@ -25,6 +27,16 @@ namespace BasicGraficEngine
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","w","w","w","w","w","w"},
+        };
+        string[,] Buildings =
+       {
+             {"w","w","w","w","w","w","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","g","g","g","w"},
+             {"w","g","g","b","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","w","w","w","w","w","w"},
@@ -58,8 +70,19 @@ namespace BasicGraficEngine
                     }
                 }
             }
+            for (int i = 0; i < Map.GetLength(0); i++)
+            {
+                for (int j = 0; j < Map.GetLength(1); j++)
+                {
+                    if (Buildings[i,j] == "b")
+                    {
+                        new Sprite2D(new Vector(j * 36, i * 36), new Vector(51, 80), "Houses/House", "House");
+                    }
+                }
+            }
             Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Right", "Player");
-            
+            Tags.Add("Water");
+            Tags.Add("House");
         }
         int times = 0;
         public override void OnUpdate()
@@ -68,13 +91,8 @@ namespace BasicGraficEngine
             if(Down) { Player.Position.Y +=1f; }
             if (Left) { Player.Position.X -= 1f; } 
             if (Right) { Player.Position.X += 1f; }
-            
-            if(Player.IsColliding("Water"))
-            {
-                Log.Info($"Collision {times}");
-                times++;
-            }
 
+            Player.CollitionStop(Player.IsColliding(Tags));
         }
 
         public override void GetKeyDown(KeyEventArgs e)
