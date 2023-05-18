@@ -15,6 +15,7 @@ namespace BasicGraficEngine.GameEngine
         public string Directory = "";
         public string Tag = "";
         public Bitmap Sprite = null;
+        public SpriteAnimation Animation = null;
         public Sprite2D(Vector position, Vector scale, string Directory, string tag)
         {
             this.Position = position;
@@ -71,6 +72,19 @@ namespace BasicGraficEngine.GameEngine
                 LasPos.X = Position.X;
                 LasPos.Y = Position.Y;
             }
+        }
+        public void AddSpriteAnimation(SpriteAnimation spriteAnimation)
+        {
+            this.Animation = spriteAnimation;
+        }
+        public void cycleAnimation()
+        {
+            this.Sprite = Animation.GetSpriteForDirection(this.Position);
+            Engine.UpdateSpriteWithTag(Sprite, Tag);
+        }
+        public void UpdateSpirte(Bitmap sprite)
+        {
+            this.Sprite = sprite;
         }
     }
 }

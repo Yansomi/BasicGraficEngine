@@ -81,6 +81,16 @@ namespace BasicGraficEngine.GameEngine
         {
             AllSprites.Remove(sprite);
         }
+        public static void UpdateSpriteWithTag(Bitmap sprite, string tag)
+        {
+            foreach(Sprite2D sprite2 in AllSprites)
+            {
+                if(sprite2.Tag == tag)
+                {
+                    sprite2.UpdateSpirte(sprite);
+                }
+            }
+        }
         void GameLoop()
         {
             OnLoad();

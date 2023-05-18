@@ -80,7 +80,43 @@ namespace BasicGraficEngine
                     }
                 }
             }
-            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Right", "Player");
+            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Down", "Player");
+
+            SpriteDirector director1 = new SpriteDirector();
+            SpriteDirector director2 = new SpriteDirector();
+            SpriteDirector director3 = new SpriteDirector();
+            SpriteDirector director4 = new SpriteDirector();
+
+            director1.AddSpriteForNotMoving("Player/Right", new Vector(11, 16));
+            director1.AddMovingSprites("Player/Right2", new Vector(11, 16));
+            director1.AddMovingSprites("Player/Right3", new Vector(11, 16));
+            director1.AddMovingSprites("Player/Right4", new Vector(11, 16));
+
+            director2.AddSpriteForNotMoving("Player/Left", new Vector(11, 16));
+            director2.AddMovingSprites("Player/Left2", new Vector(11, 16));
+            director2.AddMovingSprites("Player/Left3", new Vector(11, 16));
+            director2.AddMovingSprites("Player/Left4", new Vector(11, 16));
+
+            director3.AddSpriteForNotMoving("Player/Up", new Vector(11, 16));
+            director3.AddMovingSprites("Player/Up2", new Vector(11, 16));
+            director3.AddMovingSprites("Player/Up3", new Vector(11, 16));
+            director3.AddMovingSprites("Player/Up4", new Vector(11, 16));
+
+            director4.AddSpriteForNotMoving("Player/Down", new Vector(11, 16));
+            director4.AddMovingSprites("Player/Down2", new Vector(11, 16));
+            director4.AddMovingSprites("Player/Down3", new Vector(11, 16));
+            director4.AddMovingSprites("Player/Down4", new Vector(11, 16));
+
+            List<SpriteDirector> spriteDirectorsList = new List<SpriteDirector>();
+            spriteDirectorsList.Add(director1);
+            spriteDirectorsList.Add(director2);
+            spriteDirectorsList.Add(director3);
+            spriteDirectorsList.Add(director4);
+
+            SpriteAnimation animation = new SpriteAnimation(Player.Position, spriteDirectorsList);
+            Player.AddSpriteAnimation(animation);
+
+
             Tags.Add("Water");
             Tags.Add("House");
         }
@@ -93,6 +129,7 @@ namespace BasicGraficEngine
             if (Right) { Player.Position.X += 1f; }
 
             Player.CollitionStop(Player.IsColliding(Tags));
+            Player.cycleAnimation();
         }
 
         public override void GetKeyDown(KeyEventArgs e)

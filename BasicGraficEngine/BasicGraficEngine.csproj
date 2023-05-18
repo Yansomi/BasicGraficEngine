@@ -52,6 +52,8 @@
     <Compile Include="GameEngine\Log.cs" />
     <Compile Include="GameEngine\Shape2D.cs" />
     <Compile Include="GameEngine\Sprite2D.cs" />
+    <Compile Include="GameEngine\SpriteAnimation.cs" />
+    <Compile Include="GameEngine\SpriteDirector.cs" />
     <Compile Include="GameEngine\Vector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
