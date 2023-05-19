@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BasicGraficEngine
 {
-    internal class MapHandler1
+    public class MapHandler1
     {
         public List<List<MapGrid>> mapGridList;
         private GridData gridData;
