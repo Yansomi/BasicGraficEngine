@@ -1,12 +1,12 @@
 ﻿using BasicGraficEngine.GameEngine;
-using BasicGraficEngine.MapFunction;
+using BasicGraficEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicGraficEngine
+namespace BasicGraficEngine.MapFunction
 {
     public class MapHandler1
     {
