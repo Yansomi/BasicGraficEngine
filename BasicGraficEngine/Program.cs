@@ -10,7 +10,7 @@ namespace BasicGraficEngine
     {
         static void Main(string[] args)
         {
-            DemoGame game = new DemoGame();
+            //DemoGame game = new DemoGame();
         }
     }
 }

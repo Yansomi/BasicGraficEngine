@@ -35,6 +35,7 @@ namespace BasicGraficEngine
         public override void OnLoad()
         {
             BackgroundColor = Color.Black;
+
             mapHandler.LoadMap();
 
             SpriteDirector director1 = new SpriteDirector();
