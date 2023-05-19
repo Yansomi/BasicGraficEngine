@@ -98,6 +98,7 @@ namespace BasicGraficEngine
 
             Tags.Add("Water");
             Tags.Add("House");
+            Tags.Add("Tree");
         }
         int times = 0;
         float n = -1f;
