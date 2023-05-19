@@ -19,7 +19,7 @@ namespace BasicGraficEngine.MapFunction
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","g"},
-             {"w","g","g","g","g","g","w"},
+             {"w","g","g","h","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","w","w","w","w","w","w"},
             };
@@ -28,7 +28,7 @@ namespace BasicGraficEngine.MapFunction
              {"w","w","w","w","w","w","w"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
-             {"g","g","g","g","g","g","w"},
+             {"g","g","g","g","t","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","w","w","w","w","w","w"},
