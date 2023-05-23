@@ -22,7 +22,8 @@ namespace BasicGraficEngine
         bool Right;
         bool Up;
         bool Down;
-        MapHandler mapHandler = new MapHandler();
+        MapHandler mapHandler;
+        Thread UpdateMapThread;
         public DemoGame() : base(new Vector(720,720),"Basic Engine Demo")
         { 
         }
@@ -35,7 +36,7 @@ namespace BasicGraficEngine
         public override void OnLoad()
         {
             BackgroundColor = Color.Black;
-            mapHandler.LoadMap();
+            
 
             SpriteDirector director1 = new SpriteDirector();
             SpriteDirector director2 = new SpriteDirector();
@@ -67,14 +68,15 @@ namespace BasicGraficEngine
             spriteDirectorsList.Add(director2);
             spriteDirectorsList.Add(director3);
             spriteDirectorsList.Add(director4);
-            Player = new Sprite2D(new Vector(40, 40), new Vector(11, 16), "Player/Left", "Player");
+            Player = new Sprite2D(new Vector(378, 126), new Vector(11, 16), "Player/Left", "Player");
+            mapHandler = new MapHandler(Player.Position);
             Vector v = new Vector();
             v.X = Player.Position.X;
             v.Y = Player.Position.Y;
             SpriteAnimation animation = new SpriteAnimation(v, spriteDirectorsList);
             Player.AddSpriteAnimation(animation);
-
-
+            mapHandler.LoadMap();
+            //UpdateMapThread = new Thread(mapHandler.UpdateMap);
             Tags.Add("Water");
             Tags.Add("House");
             Tags.Add("Tree");
@@ -92,6 +94,14 @@ namespace BasicGraficEngine
             Player.cycleAnimation();
             base.CameraPosition.X = Player.Position.X * n + 360;
             base.CameraPosition.Y = Player.Position.Y * n + 360;
+            Engine.PlayerLast();
+            mapHandler.playerVector.X = Player.Position.X;
+            mapHandler.playerVector.Y = Player.Position.Y;
+            //if(!UpdateMapThread.IsAlive)
+            //{
+            //    UpdateMapThread.Start();
+            //}
+            mapHandler.UpdateMap();
         }
 
         public override void GetKeyDown(KeyEventArgs e)

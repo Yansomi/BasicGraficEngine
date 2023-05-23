@@ -134,6 +134,37 @@ namespace BasicGraficEngine.GameEngine
             }
             
         }
+        private static Sprite2D FindByTag(string tag)
+        {
+            for(int i = 0;i < AllSprites.Count;i++)
+            {
+                if (AllSprites[i].Tag.ToLower() == tag.ToLower())
+                { 
+                    return AllSprites[i];
+                }
+            }
+            return null;
+        }
+        public static void PlayerLast()
+        {
+            if(AllSprites.Last().Tag.ToLower() != "player")
+            {
+                Sprite2D temp = FindByTag("player");
+                AllSprites.Remove(temp);
+                AllSprites.Add(temp);
+            }
+        }
+        public static bool CheckObjByPos(Vector Pos)
+        {
+            for(int i = 0;i <AllSprites.Count;i++)
+            {
+                if (AllSprites[i].Tag.ToLower() != "player" && AllSprites[i].Position.X == Pos.X && AllSprites[i].Position.Y == Pos.Y)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public abstract void OnLoad();
         public abstract void OnUpdate();
         public abstract void OnDraw();
