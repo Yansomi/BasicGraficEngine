@@ -23,16 +23,6 @@ namespace BasicGraficEngine
         bool Up;
         bool Down;
         MapHandler mapHandler = new MapHandler();
-       // string[,] Buildings =
-       //{
-       //      {"w","w","w","w","w","w","w"},
-       //      {"w","g","g","g","g","g","w"},
-       //      {"w","g","g","g","g","g","w"},
-       //      {"w","g","g","b","g","g","w"},
-       //      {"w","g","g","g","g","g","w"},
-       //      {"w","g","g","g","g","g","w"},
-       //      {"w","w","w","w","w","w","w"},
-       // };
         public DemoGame() : base(new Vector(720,720),"Basic Engine Demo")
         { 
         }
@@ -46,17 +36,6 @@ namespace BasicGraficEngine
         {
             BackgroundColor = Color.Black;
             mapHandler.LoadMap();
-
-            //for (int i = 0; i < Map.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < Map.GetLength(1); j++)
-            //    {
-            //        if (Buildings[i,j] == "b")
-            //        {
-            //            new Sprite2D(new Vector(j * 36, i * 36), new Vector(51, 80), "Houses/House", "House");
-            //        }
-            //    }
-            //}
 
             SpriteDirector director1 = new SpriteDirector();
             SpriteDirector director2 = new SpriteDirector();
