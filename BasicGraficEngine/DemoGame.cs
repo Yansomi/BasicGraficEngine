@@ -23,7 +23,6 @@ namespace BasicGraficEngine
         bool Up;
         bool Down;
         MapHandler mapHandler;
-        Thread UpdateMapThread;
         public DemoGame() : base(new Vector(720,720),"Basic Engine Demo")
         { 
         }
@@ -75,8 +74,6 @@ namespace BasicGraficEngine
             v.Y = Player.Position.Y;
             SpriteAnimation animation = new SpriteAnimation(v, spriteDirectorsList);
             Player.AddSpriteAnimation(animation);
-            UpdateMapThread = new Thread(MapUpdateLoop);
-            UpdateMapThread.Start();
             Tags.Add("Water");
             Tags.Add("House");
             Tags.Add("Tree");
@@ -138,14 +135,6 @@ namespace BasicGraficEngine
             if (e.KeyCode == Keys.D)
             {
                 Right = false;
-            }
-        }
-        void MapUpdateLoop()
-        {
-            while(UpdateMapThread.IsAlive)
-            {
-                mapHandler.UpdateMap();
-                Thread.Sleep(1);
             }
         }
     }

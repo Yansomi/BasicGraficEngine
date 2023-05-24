@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BasicGraficEngine
@@ -12,6 +13,7 @@ namespace BasicGraficEngine
     {
         public List<List<MapGrid>> mapGridList;
         private GridData gridData;
+        Thread UpdateMapThread;
         public Vector playerVector { get; set; }
 
         public MapHandler(Vector playerVector) 
@@ -20,6 +22,8 @@ namespace BasicGraficEngine
             GridData gridData = new GridData();
             mapGridList = gridData.GetAsMapGrid();
             this.playerVector = playerVector;
+            UpdateMapThread = new Thread(MapUpdateLoop);
+            UpdateMapThread.Start();
         }
         public void AddGrid(List<MapGrid> mapGridList) 
         {
@@ -85,6 +89,14 @@ namespace BasicGraficEngine
                 return true;
             }
             return false;
+        }
+        void MapUpdateLoop()
+        {
+            while (UpdateMapThread.IsAlive)
+            {
+                this.UpdateMap();
+                Thread.Sleep(1);
+            }
         }
     }
 }
