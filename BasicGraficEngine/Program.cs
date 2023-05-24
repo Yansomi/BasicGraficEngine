@@ -11,8 +11,8 @@ namespace BasicGraficEngine
     {
         static void Main(string[] args)
         {
-            //DemoGame game = new DemoGame();
-            
+            MapHandler1 mapHandler1 = new MapHandler1();
+            //DemoGame game = new DemoGame   
         }
     }
 }

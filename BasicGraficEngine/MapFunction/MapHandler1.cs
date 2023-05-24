@@ -1,5 +1,5 @@
 ﻿using BasicGraficEngine.GameEngine;
-using BasicGraficEngine;
+using BasicGraficEngine.MapFunction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +41,9 @@ namespace BasicGraficEngine.MapFunction
                     {
                         for (int j = 0; j < Map.getGrid().GetLength(1); j++)
                         {
-                            mapSprites[Map.getGrid()[i, j]].Position = j * 36 + gridstartX, i * 36 + gridstartY;
-                            mapSprites[Map.getGrid()[i, j]].Scale = new Vector(36, 36);
+                            mapSprites[Map.getGrid()[i, j]].Position = new Vector(j * 36 + gridstartX, i * 36 + gridstartY);
+                            new Sprite2D(mapSprites[Map.getGrid()[i, j]].Position, mapSprites[Map.getGrid()[i, j]].Scale,
+                                mapSprites[Map.getGrid()[i, j]].Directory, mapSprites[Map.getGrid()[i, j]].Tag);
                         }
                     }
                     nrOfGrids++;
