@@ -36,13 +36,14 @@ namespace BasicGraficEngine
             int nrOfGrids = 0;
             int gridstartX = 0;
             int gridstartY = 0;
+            int GridXYSize = 252;
             for (int y = 0; y < mapGridList.Count; y++)
             {
-                gridstartY = y * 252;
+                gridstartY = y * GridXYSize;
                 nrOfGrids = 0;
                 foreach (MapGrid Map in mapGridList[y])
                 {
-                    gridstartX = nrOfGrids * 252;
+                    gridstartX = nrOfGrids * GridXYSize;
                     for (int i = 0; i < Map.getGrid().GetLength(0); i++)
                     {
                         for (int j = 0; j < Map.getGrid().GetLength(1); j++)
