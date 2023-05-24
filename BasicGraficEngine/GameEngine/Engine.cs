@@ -89,6 +89,7 @@ namespace BasicGraficEngine.GameEngine
                 if(sprite2.Tag == tag)
                 {
                     sprite2.UpdateSpirte(sprite);
+                    break;
                 }
             }
         }

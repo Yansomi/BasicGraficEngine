@@ -93,9 +93,9 @@ namespace BasicGraficEngine
             {
                 if (!CheckRenderDistance((int)Engine.AllSprites[i].Position.X, (int)Engine.AllSprites[i].Position.Y))
                 {
+                    Log.Info($"sprite removed({Engine.AllSprites[i].Tag})");
                     Engine.AllSprites.RemoveAt(i);
                     i--;
-                    Log.Info("sprite removed");
                 }
             }
         }
