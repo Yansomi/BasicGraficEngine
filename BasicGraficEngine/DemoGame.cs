@@ -76,7 +76,8 @@ namespace BasicGraficEngine
             SpriteAnimation animation = new SpriteAnimation(v, spriteDirectorsList);
             Player.AddSpriteAnimation(animation);
             mapHandler.LoadMap();
-            //UpdateMapThread = new Thread(mapHandler.UpdateMap);
+            UpdateMapThread = new Thread(MapUpdateLoop);
+            UpdateMapThread.Start();
             Tags.Add("Water");
             Tags.Add("House");
             Tags.Add("Tree");
@@ -97,11 +98,6 @@ namespace BasicGraficEngine
             Engine.PlayerLast();
             mapHandler.playerVector.X = Player.Position.X;
             mapHandler.playerVector.Y = Player.Position.Y;
-            //if(!UpdateMapThread.IsAlive)
-            //{
-            //    UpdateMapThread.Start();
-            //}
-            mapHandler.UpdateMap();
         }
 
         public override void GetKeyDown(KeyEventArgs e)
@@ -145,9 +141,13 @@ namespace BasicGraficEngine
                 Right = false;
             }
         }
-        void MapCaller()
+        void MapUpdateLoop()
         {
-            mapHandler.LoadMap();
+            while(UpdateMapThread.IsAlive)
+            {
+                mapHandler.UpdateMap();
+                Thread.Sleep(1);
+            }
         }
     }
 }
