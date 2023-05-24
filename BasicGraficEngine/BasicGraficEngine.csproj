@@ -58,6 +58,7 @@
     <Compile Include="MapFunction\GridData.cs" />
     <Compile Include="MapFunction\MapGrid.cs" />
     <Compile Include="MapFunction\MapHandler.cs" />
+    <Compile Include="MapFunction\MapObjHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

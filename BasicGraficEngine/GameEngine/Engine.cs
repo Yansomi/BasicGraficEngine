@@ -154,11 +154,11 @@ namespace BasicGraficEngine.GameEngine
                 AllSprites.Add(temp);
             }
         }
-        public static bool CheckObjByPos(Vector Pos)
+        public static bool CheckObjByPos(Vector Pos, string Tag)
         {
             for(int i = 0;i <AllSprites.Count;i++)
             {
-                if (AllSprites[i].Tag.ToLower() != "player" && AllSprites[i].Position.X == Pos.X && AllSprites[i].Position.Y == Pos.Y)
+                if (AllSprites[i].Tag.ToLower() != "player" && AllSprites[i].Position.X == Pos.X && AllSprites[i].Position.Y == Pos.Y && AllSprites[i].Tag.ToLower() == Tag.ToLower())
                 {
                     return false;
                 }

@@ -20,7 +20,7 @@ namespace BasicGraficEngine.MapFunction
              {"w","w","w","g","w","w","w"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
-             {"w","g","g","g","g","g","g"},
+             {"w","g","g","gh","g","g","g"},
              {"w","g","g","g","g","g","w"},
              {"w","g","g","g","g","g","w"},
              {"w","w","w","g","w","w","w"},
@@ -47,13 +47,13 @@ namespace BasicGraficEngine.MapFunction
                         };
             string[,] grid4 =
 {
-                         {"w","w","w","g","w","w","W"},
+                         {"w","w","w","g","w","w","w"},
                          {"w","g","g","g","g","g","w"},
                          {"w","g","g","g","g","g","w"},
                          {"g","g","g","g","g","g","g"},
                          {"w","g","g","g","g","g","w"},
                          {"w","g","g","g","g","g","w"},
-                         {"w","w","w","g","w","w","W"},
+                         {"w","w","w","g","w","w","w"},
                         };
             //            string[,] grid5 =
             //{
