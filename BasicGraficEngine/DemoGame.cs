@@ -75,7 +75,6 @@ namespace BasicGraficEngine
             v.Y = Player.Position.Y;
             SpriteAnimation animation = new SpriteAnimation(v, spriteDirectorsList);
             Player.AddSpriteAnimation(animation);
-            mapHandler.LoadMap();
             UpdateMapThread = new Thread(MapUpdateLoop);
             UpdateMapThread.Start();
             Tags.Add("Water");
