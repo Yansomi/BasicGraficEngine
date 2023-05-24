@@ -29,7 +29,10 @@ namespace BasicGraficEngine
         {
             this.mapGridList.Add(mapGridList);
         }
-
+        ~MapHandler()
+        {
+            UpdateMapThread.Abort();
+        }
         public void UpdateMap()
         {
             Vector Pos = new Vector();
@@ -58,9 +61,9 @@ namespace BasicGraficEngine
                             {
                                 new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(36, 36), "Tiles/Water", "Water");
                             }
-                            //if (Map.getGrid()[i, j] == "h")
+                            //if (Map.getGrid()[i, j] == "gh" && CheckRenderDistance(j * 36 + gridstartX, i * 36 + gridstartY) && Engine.CheckObjByPos(Pos))
                             //{
-                            //    new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(36, 36), "Houses/House", "House");
+                            //    new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(51, 80), "Houses/House", "House");
                             //}
                             //if (Map.getGrid()[i, j] == "t")
                             //{
