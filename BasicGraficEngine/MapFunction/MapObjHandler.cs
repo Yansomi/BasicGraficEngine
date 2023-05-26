@@ -27,22 +27,25 @@ namespace BasicGraficEngine.MapFunction
             ObjTag.Add(Tag);
             nrOfObj++;
         }
-        public void MapBuilder(Vector position, string gridDesignaiton)
+        public void MapBuilder(Vector position, string gridDesignaiton,CheckRenderDistance check)
         {
-            if(gridDesignaiton == "g" && Engine.CheckObjByPos(position,"ground"))
+            if (check((int)position.X, (int)position.Y))
             {
-                new Sprite2D(new Vector(position.X,position.Y), new Vector(36, 36), "Tiles/Grass", "Ground");
-            }
-            if (gridDesignaiton == "w" && Engine.CheckObjByPos(position, "water"))
-            {
-                new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Water", "Water");
-            }
-            if (gridDesignaiton == "gh" && Engine.CheckObjByPos(position, "ground"))
-            {
-                ObjPosition.Add(new Vector(position.X,position.Y));
-                ObjTag.Add("gh");
-                nrOfObj++;
-                new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Grass", "Ground");
+                if (gridDesignaiton == "g" && Engine.CheckObjByPos(position, "ground"))
+                {
+                    new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Grass", "Ground");
+                }
+                if (gridDesignaiton == "w" && Engine.CheckObjByPos(position, "water"))
+                {
+                    new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Water", "Water");
+                }
+                if (gridDesignaiton == "gh" && Engine.CheckObjByPos(position, "ground"))
+                {
+                    ObjPosition.Add(new Vector(position.X, position.Y));
+                    ObjTag.Add("gh");
+                    nrOfObj++;
+                    new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Grass", "Ground");
+                }
             }
 
         }
