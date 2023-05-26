@@ -62,6 +62,9 @@ namespace BasicGraficEngine.MapFunction
                     new Sprite2D(new Vector(ObjPosition[i].X, ObjPosition[i].Y), new Vector(22, 32), "Trees/Tree", "Tree");
                 }
             }
+            this.ObjPosition.Clear();
+            this.ObjTag.Clear();
+            this.nrOfObj = 0;
         }
 
     }
