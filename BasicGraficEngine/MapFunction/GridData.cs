@@ -40,7 +40,7 @@ namespace BasicGraficEngine.MapFunction
                          {"w","w","w","g","w","w","w"},
                          {"w","g","g","g","g","g","w"},
                          {"w","g","g","g","g","g","w"},
-                         {"g","g","g","g","g","g","g"},
+                         {"g","g","g","gt","g","g","g"},
                          {"w","g","g","g","g","g","w"},
                          {"w","g","g","g","g","g","w"},
                          {"w","w","w","g","w","w","w"},

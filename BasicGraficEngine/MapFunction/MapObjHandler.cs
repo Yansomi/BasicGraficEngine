@@ -39,10 +39,10 @@ namespace BasicGraficEngine.MapFunction
                 {
                     new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Water", "Water");
                 }
-                if (gridDesignaiton == "gh" && Engine.CheckObjByPos(position, "ground"))
+                if ((gridDesignaiton == "gh" || gridDesignaiton =="gt") && Engine.CheckObjByPos(position, "ground"))
                 {
                     ObjPosition.Add(new Vector(position.X, position.Y));
-                    ObjTag.Add("gh");
+                    ObjTag.Add(gridDesignaiton);
                     nrOfObj++;
                     new Sprite2D(new Vector(position.X, position.Y), new Vector(36, 36), "Tiles/Grass", "Ground");
                 }
@@ -56,6 +56,10 @@ namespace BasicGraficEngine.MapFunction
                 if (ObjTag[i].ToLower() == "gh" && Engine.CheckObjByPos(ObjPosition[i],"house") && check((int)ObjPosition[i].X, (int)ObjPosition[i].Y))
                 {
                     new Sprite2D(new Vector(ObjPosition[i].X, ObjPosition[i].Y), new Vector(51, 80), "Houses/House", "House");
+                }
+                if (ObjTag[i].ToLower() == "gt" && Engine.CheckObjByPos(ObjPosition[i], "tree") && check((int)ObjPosition[i].X, (int)ObjPosition[i].Y))
+                {
+                    new Sprite2D(new Vector(ObjPosition[i].X, ObjPosition[i].Y), new Vector(22, 32), "Trees/Tree", "Tree");
                 }
             }
         }
