@@ -35,44 +35,34 @@ namespace BasicGraficEngine
         public override void OnLoad()
         {
             BackgroundColor = Color.Black;
-            
+            SpriteAnimationBuilder animationBuilder = new SpriteAnimationBuilder();
 
-            SpriteDirector director1 = new SpriteDirector();
-            SpriteDirector director2 = new SpriteDirector();
-            SpriteDirector director3 = new SpriteDirector();
-            SpriteDirector director4 = new SpriteDirector();
+            animationBuilder.AddMovingToDirectorRight("Player/Right2", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorRight("Player/Right3", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorRight("Player/Right4", new Vector(11, 16));
+            animationBuilder.AddNotMovingDirectorRight("Player/Right", new Vector(11, 16));
 
-            director1.AddSpriteForNotMoving("Player/Right", new Vector(11, 16));
-            director1.AddMovingSprites("Player/Right2", new Vector(11, 16));
-            director1.AddMovingSprites("Player/Right3", new Vector(11, 16));
-            director1.AddMovingSprites("Player/Right4", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorLeft("Player/Left2", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorLeft("Player/Left3", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorLeft("Player/Left4", new Vector(11, 16));
+            animationBuilder.AddNotMovingDirectorLeft("Player/Left", new Vector(11, 16));
 
-            director2.AddSpriteForNotMoving("Player/Left", new Vector(11, 16));
-            director2.AddMovingSprites("Player/Left2", new Vector(11, 16));
-            director2.AddMovingSprites("Player/Left3", new Vector(11, 16));
-            director2.AddMovingSprites("Player/Left4", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorUp("Player/Up2", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorUp("Player/Up3", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorUp("Player/Up4", new Vector(11, 16));
+            animationBuilder.AddNotMovingDirectorUp("Player/Up", new Vector(11, 16));
 
-            director3.AddSpriteForNotMoving("Player/Up", new Vector(11, 16));
-            director3.AddMovingSprites("Player/Up2", new Vector(11, 16));
-            director3.AddMovingSprites("Player/Up3", new Vector(11, 16));
-            director3.AddMovingSprites("Player/Up4", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorDown("Player/Down2", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorDown("Player/Down3", new Vector(11, 16));
+            animationBuilder.AddMovingToDirectorDown("Player/Down4", new Vector(11, 16));
+            animationBuilder.AddNotMovingDirectorDown("Player/Down", new Vector(11, 16));
 
-            director4.AddSpriteForNotMoving("Player/Down", new Vector(11, 16));
-            director4.AddMovingSprites("Player/Down2", new Vector(11, 16));
-            director4.AddMovingSprites("Player/Down3", new Vector(11, 16));
-            director4.AddMovingSprites("Player/Down4", new Vector(11, 16));
-
-            List<SpriteDirector> spriteDirectorsList = new List<SpriteDirector>();
-            spriteDirectorsList.Add(director1);
-            spriteDirectorsList.Add(director2);
-            spriteDirectorsList.Add(director3);
-            spriteDirectorsList.Add(director4);
             Player = new Sprite2D(new Vector(378, 126), new Vector(11, 16), "Player/Left", "Player");
             mapHandler = new MapHandler(Player.Position);
             Vector v = new Vector();
             v.X = Player.Position.X;
             v.Y = Player.Position.Y;
-            SpriteAnimation animation = new SpriteAnimation(v, spriteDirectorsList);
+            SpriteAnimation animation = animationBuilder.SpriteAnimationBuild(v);
             Player.AddSpriteAnimation(animation);
             Tags.Add("Water");
             Tags.Add("House");

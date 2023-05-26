@@ -54,6 +54,7 @@
     <Compile Include="GameEngine\Sprite2D.cs" />
     <Compile Include="GameEngine\SpriteAnimation.cs" />
     <Compile Include="GameEngine\SpriteDirector.cs" />
+    <Compile Include="GameEngine\SpriteAnimationBuilder.cs" />
     <Compile Include="GameEngine\Vector.cs" />
     <Compile Include="MapFunction\GridData.cs" />
     <Compile Include="MapFunction\MapGrid.cs" />
