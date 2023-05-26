@@ -58,7 +58,6 @@ namespace BasicGraficEngine
                             Pos.Y = i * 36 + gridstartY;
 
                             mapObjHandler.MapBuilder(Pos, Map.getGrid()[i, j],CheckRenderDistance);
-
                         }
                     }
                     nrOfGrids++;
