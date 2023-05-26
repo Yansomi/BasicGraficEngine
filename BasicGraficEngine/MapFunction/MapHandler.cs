@@ -56,37 +56,14 @@ namespace BasicGraficEngine
                         {
                             Pos.X = j * 36 + gridstartX;
                             Pos.Y = i * 36 + gridstartY;
-                            if (Map.getGrid()[i, j] == "g" && CheckRenderDistance(j * 36 + gridstartX, i * 36 + gridstartY) && Engine.CheckObjByPos(Pos,"ground"))
+
+                            if (CheckRenderDistance((int)Pos.X, (int)Pos.Y))
                             {
-                                new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(36, 36), "Tiles/Grass", "Ground");
+                                mapObjHandler.MapBuilder(Pos, Map.getGrid()[i, j]);
                             }
-                            if (Map.getGrid()[i, j] == "w" && CheckRenderDistance(j * 36 + gridstartX, i * 36 + gridstartY) && Engine.CheckObjByPos(Pos,"water"))
-                            {
-                                new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(36, 36), "Tiles/Water", "Water");
-                            }
-                            if (Map.getGrid()[i, j] == "gh" && CheckRenderDistance(j * 36 + gridstartX, i * 36 + gridstartY) && Engine.CheckObjByPos(Pos,"ground"))
-                            {
-                                new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(36, 36), "Tiles/Grass", "Ground");
-                                mapObjHandler.AddObjPositions(new Vector(j * 36 + gridstartX, i * 36 + gridstartY));
-                                //new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(51, 80), "Houses/House", "House");
-                            }
-                            //if (Map.getGrid()[i, j] == "t")
-                            //{
-                            //    new Sprite2D(new Vector(j * 36 + gridstartX, i * 36 + gridstartY), new Vector(36, 36), "Trees/TreeGrass", "Tree");
-                            //}
                         }
                     }
                     nrOfGrids++;
-                }
-            }
-            Vector objVector = new Vector();
-            for(int i = 0; i < mapObjHandler.ObjPosition.Count; i++)
-            {
-                objVector.X = mapObjHandler.ObjPosition[i].X;
-                objVector.Y = mapObjHandler.ObjPosition[i].Y;
-                if (CheckRenderDistance((int)objVector.X,(int)objVector.Y) && Engine.CheckObjByPos(objVector,"house"))
-                {
-                    mapObjHandler.BuildHouse(i);
                 }
             }
             for (int i = 0; i < Engine.AllSprites.Count; i++)
@@ -98,6 +75,8 @@ namespace BasicGraficEngine
                     i--;
                 }
             }
+                mapObjHandler.BuildOtherMapObj(CheckRenderDistance);
+
         }
         private bool CheckRenderDistance(int X, int Y)
         {

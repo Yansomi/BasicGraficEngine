@@ -120,6 +120,7 @@ namespace BasicGraficEngine.GameEngine
 
         private void Renderer(object sender, PaintEventArgs e)
         {
+            List<int> otherObj = new List<int>();
             Graphics g = e.Graphics;
             g.Clear(BackgroundColor);
             g.TranslateTransform(CameraPosition.X, CameraPosition.Y);
@@ -131,9 +132,20 @@ namespace BasicGraficEngine.GameEngine
 
             for(int i =0; i < AllSprites.Count; i++)
             {
-                g.DrawImage(AllSprites[i].Sprite, AllSprites[i].Position.X, AllSprites[i].Position.Y, AllSprites[i].Scale.X, AllSprites[i].Scale.Y);    
+                if (AllSprites[i].Tag.ToLower() == "ground" || AllSprites[i].Tag.ToLower() == "water" || AllSprites[i].Tag.ToLower() == "player")
+                {
+                    g.DrawImage(AllSprites[i].Sprite, AllSprites[i].Position.X, AllSprites[i].Position.Y, AllSprites[i].Scale.X, AllSprites[i].Scale.Y);
+                }
+                else
+                {
+                    otherObj.Add(i);
+                }
             }
-            
+            for (int i = 0; i < otherObj.Count; i++)
+            {
+                g.DrawImage(AllSprites[otherObj[i]].Sprite, AllSprites[otherObj[i]].Position.X, AllSprites[otherObj[i]].Position.Y, AllSprites[otherObj[i]].Scale.X, AllSprites[otherObj[i]].Scale.Y);
+            }
+
         }
         private static Sprite2D FindByTag(string tag)
         {
