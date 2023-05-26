@@ -46,7 +46,13 @@ namespace BasicGraficEngine.GameEngine
         {
             directorDown.AddSpriteForNotMoving(directory, sacle);
         }
-
+        /// <summary>
+        /// Add images for the correct direction then use this function to creat a SpriteAnimation to
+        /// add to your sprite that you want to animate.
+        /// Don't forget the images for standing still.
+        /// </summary>
+        /// <param name="positionForObjToAnimate"></param>
+        /// <returns></returns>
         public SpriteAnimation SpriteAnimationBuild(Vector positionForObjToAnimate)
         {
             List<SpriteDirector> directors = new List<SpriteDirector>();
