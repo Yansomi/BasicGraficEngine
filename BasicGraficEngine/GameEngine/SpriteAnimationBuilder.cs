@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace BasicGraficEngine.GameEngine
 {
+    /// <summary>
+    /// Add images for the correct direction then use this function to creat a SpriteAnimation to
+    /// add to your sprite that you want to animate.
+    /// Don't forget the images for standing still.
+    /// </summary>
     public class SpriteAnimationBuilder
     {
         private SpriteDirector directorRigth = new SpriteDirector();
@@ -47,9 +52,7 @@ namespace BasicGraficEngine.GameEngine
             directorDown.AddSpriteForNotMoving(directory, sacle);
         }
         /// <summary>
-        /// Add images for the correct direction then use this function to creat a SpriteAnimation to
-        /// add to your sprite that you want to animate.
-        /// Don't forget the images for standing still.
+        ///needs a copy of the Vector position from the objekt to animate
         /// </summary>
         /// <param name="positionForObjToAnimate"></param>
         /// <returns></returns>
