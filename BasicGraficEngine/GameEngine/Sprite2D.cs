@@ -25,7 +25,7 @@ namespace BasicGraficEngine.GameEngine
 
             Animation = new SpriteAnimation();
 
-            Image temp = Image.FromFile($"Assets/Sprites/{Directory}.png");
+            Image temp = Image.FromFile($"C:/Users/Hampu/Source/Repos/Yansomi/BasicGraficEngine/BasicGraficEngine/Assets/Sprites/{Directory}.png");
 
             Bitmap sprite = new Bitmap(temp,(int)this.Scale.X, (int)this.Scale.Y);
             this.Sprite = sprite;

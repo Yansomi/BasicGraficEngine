@@ -37,13 +37,13 @@ namespace BasicGraficEngine.GameEngine
         }
         public void AddMovingSprites(string Directory,Vector scale)
         {
-            Image temp = Image.FromFile($"Assets/Sprites/{Directory}.png");
+            Image temp = Image.FromFile($"C:/Users/Hampu/Source/Repos/Yansomi/BasicGraficEngine/BasicGraficEngine/Assets/Sprites/{Directory}.png");
             Bitmap toAdd = new Bitmap(temp,(int)scale.X,(int)scale.Y);
             Sprites.Add(toAdd); 
         }
         public void AddSpriteForNotMoving(string Directory,Vector scale)
         {
-            Image temp = Image.FromFile($"Assets/Sprites/{Directory}.png");
+            Image temp = Image.FromFile($"C:/Users/Hampu/Source/Repos/Yansomi/BasicGraficEngine/BasicGraficEngine/Assets/Sprites/{Directory}.png");
             Bitmap toAdd = new Bitmap(temp, (int)scale.X, (int)scale.Y);
             NotMoving = toAdd;
         }

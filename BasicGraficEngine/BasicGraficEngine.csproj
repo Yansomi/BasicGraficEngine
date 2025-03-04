@@ -64,5 +64,35 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Sprites\House.png" />
+    <Content Include="Assets\Sprites\House2.png" />
+    <Content Include="Assets\Sprites\Player\Down.png" />
+    <Content Include="Assets\Sprites\Player\Down2.png" />
+    <Content Include="Assets\Sprites\Player\Down3.png" />
+    <Content Include="Assets\Sprites\Player\Down4.png" />
+    <Content Include="Assets\Sprites\Player\Left.png" />
+    <Content Include="Assets\Sprites\Player\Left2.png" />
+    <Content Include="Assets\Sprites\Player\Left3.png" />
+    <Content Include="Assets\Sprites\Player\Left4.png" />
+    <Content Include="Assets\Sprites\Player\Right.png" />
+    <Content Include="Assets\Sprites\Player\Right2.png" />
+    <Content Include="Assets\Sprites\Player\Right3.png" />
+    <Content Include="Assets\Sprites\Player\Right4.png" />
+    <Content Include="Assets\Sprites\Player\Up.png" />
+    <Content Include="Assets\Sprites\Player\Up2.png" />
+    <Content Include="Assets\Sprites\Player\Up3.png" />
+    <Content Include="Assets\Sprites\Player\Up4.png" />
+    <Content Include="Assets\Sprites\Tiles\DarkGrass.png" />
+    <Content Include="Assets\Sprites\Tiles\DarkGrass2.png" />
+    <Content Include="Assets\Sprites\Tiles\Grass.png" />
+    <Content Include="Assets\Sprites\Tiles\Grass2.png" />
+    <Content Include="Assets\Sprites\Tiles\Grass3.png" />
+    <Content Include="Assets\Sprites\Tiles\Grass4.png" />
+    <Content Include="Assets\Sprites\Tiles\Sand.png" />
+    <Content Include="Assets\Sprites\Tiles\Water.png" />
+    <Content Include="Assets\Sprites\Tree.png" />
+    <Content Include="Assets\Sprites\TreeGrass.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
